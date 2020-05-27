@@ -1,5 +1,16 @@
-const app = require('express');
+const express = require('express');
+const app = express();
 const PORT = 4000;
 
 
-app.listen(PORT, req,res)
+
+
+app.get('/',(req,res)=>{
+    console.log(req.method) 
+    res.send('hi')
+})
+
+app.listen(PORT,()=>{
+    
+    console.log('listening on port',PORT);
+})
