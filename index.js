@@ -5,6 +5,7 @@ const userRouter = require('./routers/user')
 const authRouter = require('./routers/auth')
 const app = express();
 const PORT = 4000;
+const cors = require('cors')
 
 
 app.use(jsonParser);
