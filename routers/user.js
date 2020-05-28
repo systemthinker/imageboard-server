@@ -17,12 +17,24 @@ router.post("/", async (req, res, next) => {
         res.status(400).send("missing parameters");
       } else {
         const hashedPassword = bcrypt.hashSync(password, 10);
-        const newUser = await User.create(req.body);
+        const newUser = await User.create({
+          email,
+          fullName,
+          password: hashedPassword
+        });
         res.json(newUser);
       }
     } catch (e) {
       next(e);
     }
+  });
+
+  router.get("/", async(req,res)=>{
+    let userData = await User.findAll();
+    userData = userData.map(u=>u.get({plain:true}))
+    
+
+    res.send(userData)
   });
 
 
